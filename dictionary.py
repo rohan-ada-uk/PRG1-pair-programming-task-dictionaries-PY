@@ -37,25 +37,21 @@ def get_books_by_author(library, author_name):
 
     return books_by_author
 
-
 def search_by_book_name(library, search_term):
-    pass
-
+    return [book for book in library if book['title'] == search_term]
 
 def display_loan_totals():
-    pass
-
+    print(f'Total books on loan: {sum(book['isLoaned'] for book in library)}')
+    print(f'Total books not on loan: {len(library)-sum(book['isLoaned'] for book in library)}')
 
 def alter_book_status(book_title, new_status):
-    pass
-
+    next(book for book in library if book['title']==book_title)['isLoaned'] = new_status
 
 def add_new_book(library, title, author, is_loaned):
-    pass
-
+    library.append({'title':title, 'author':author, 'isLoaned':is_loaned})
 
 def remove_book(library, book_title):
-    pass
+    return [book for book in library if book['title'] != book_title]
 
 
 
